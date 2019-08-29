@@ -16,6 +16,8 @@
 
 #include "src/Utils/FixedPointNumber.h"
 
+#include <cmath>
+
 constexpr unsigned CLASSES_NUM = 10;
 
 using InputType = FixedPoint<14, 14>;
@@ -88,7 +90,7 @@ public:
 				auto errorResult = computeError(output, expectedOutput);
 				epochError += errorResult.first;
 
-				if (isnan(errorResult.first) || isinf(errorResult.first))
+				if (std::isnan(errorResult.first) || std::isinf(errorResult.first))
 				{
 					std::cerr << "Output error is NaN/INF, this may be caused by invalid choice of hyperparameters." << std::endl;
 					return;

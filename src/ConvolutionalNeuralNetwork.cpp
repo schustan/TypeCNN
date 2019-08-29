@@ -10,6 +10,7 @@
 #include <iostream>
 #include <iomanip>
 #include <chrono>
+#include <cmath>
 
 /*
  * @brief Constructor, initializes task type
@@ -165,7 +166,7 @@ float ConvolutionalNeuralNetwork::train(TrainingSettings & settings, std::vector
 
 			epochError += errorResult.first;
 			batchError += errorResult.first;
-			if (isnan(errorResult.first) || isinf(errorResult.first))
+			if (std::isnan(errorResult.first) || std::isinf(errorResult.first))
 			{
 				throw CNNException("Output error is NaN/INF, this may be caused by invalid choice of hyperparameters.");
 			}
